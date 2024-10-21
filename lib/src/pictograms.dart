@@ -138,14 +138,14 @@ class Pictograms extends StatelessWidget {
                       ),
                     ),
                     Flexible(
-                      fit: FlexFit.loose,
+                      fit: FlexFit.tight,
                       child: Text(
                         text == '' ? '' : text.toUpperCase(),
                         style: TextStyle(
                           fontSize: fontSize,
                           fontWeight: FontWeight.w600,
                         ),
-                        maxLines: 2,
+                        maxLines: 3,
                         textAlign: TextAlign.center,
                         softWrap: true,
                       ),

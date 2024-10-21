@@ -1,6 +1,6 @@
 name: pictograms
 description: "A new Pictograms based on Picto_Widget"
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/DecksPlayer/pictograms
 
 environment:
