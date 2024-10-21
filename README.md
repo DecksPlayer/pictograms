@@ -104,5 +104,5 @@ class PictoWidgetExample extends StatelessWidget {
 * iconSize: set the Size of the addIcon
 
 
-![Example](asset/capture.png)
+![Example](https://github.com/DecksPlayer/pictograms/blob/master/assets/capture.png)
 

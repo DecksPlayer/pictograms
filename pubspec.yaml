@@ -1,6 +1,6 @@
 name: pictograms
 description: "A new Pictograms based on Picto_Widget"
-version: 1.0.2
+version: 1.0.5
 homepage: https://github.com/DecksPlayer/pictograms
 
 environment:
@@ -23,8 +23,8 @@ dev_dependencies:
 flutter:
 
 # To add assets to your package, add an assets section, like this:
-# assets:
-#   - images/a_dot_burr.jpeg
+ assets:
+   - assets/
 #   - images/a_dot_ham.jpeg
 #
 # For details regarding assets in packages, see
