@@ -21,10 +21,10 @@ class Pictograms extends StatelessWidget {
   final VoidCallback? onLongPress;
 
   /// The height of the widget
-  final double height;
+  final double? height;
 
   /// The width of the widget
-  final double width;
+  final double? width;
 
   /// The border radius of the widget
   final double borderRadius;
@@ -50,6 +50,14 @@ class Pictograms extends StatelessWidget {
   /// add function
   final VoidCallback? addFunc;
 
+  final double? maxFontSize;
+  final double? minFontSize;
+  final Color? customAddColor;
+  final Color? customProgressColor;
+  final Color? backgroundColor;
+  final Color? textColor;
+  final double? iconSize;
+
   /// Constructor
   ///
   /// [text] The text to display
@@ -67,8 +75,8 @@ class Pictograms extends StatelessWidget {
     Key? key,
     this.text = '',
     required this.onTap,
-    this.height = 119,
-    this.width = 96,
+    this.height,
+    this.width,
     this.onLongPress,
     this.imageUrl,
     this.image,
@@ -76,14 +84,16 @@ class Pictograms extends StatelessWidget {
     this.borderRadius = 16,
     this.disable = false,
     this.add = false,
-    this.addFunc,
+    this.addFunc,  this.maxFontSize,  this.minFontSize, this.customAddColor, this.customProgressColor, this.backgroundColor, this.textColor, this.iconSize,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     assert(colorNumber >= 1 && colorNumber <= 6);
     assert(image != null || imageUrl != null);
-    double fontSize = MediaQuery.of(context).size.width * 0.05; // Adjust as needed
+    double screenWidth = MediaQuery.of(context).size.width;
+    double fontSize = (screenWidth * 0.03).clamp(minFontSize??6.0,maxFontSize??12);
+    // Adjust as needed
 
 
     return SizedBox(
@@ -97,11 +107,11 @@ class Pictograms extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                height: 119,
-                width: 96,
+                height: height??119,
+                width: width??96,
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color:backgroundColor??Colors.white,
                   borderRadius: BorderRadius.circular(borderRadius),
                   border: Border.all(color: groupColor[colorNumber]!, width: 3),
                 ),
@@ -125,7 +135,7 @@ class Pictograms extends StatelessWidget {
                               if (loadingProgress == null) return child;
                               return Center(
                                 child: CircularProgressIndicator(
-                                  color: Colors.orange,
+                                  color:customProgressColor??Colors.orange,
                                   value: loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes! : null,
                                 ),
                               );
@@ -144,6 +154,7 @@ class Pictograms extends StatelessWidget {
                         style: TextStyle(
                           fontSize: fontSize,
                           fontWeight: FontWeight.w600,
+                          color: textColor??Colors.black
                         ),
                         maxLines: 3,
                         textAlign: TextAlign.center,
@@ -155,20 +166,20 @@ class Pictograms extends StatelessWidget {
               ),
               add
                   ? SizedBox(
-                height: 119,
-                width: 96,
+                height: height??119,
+                width: width??96,
                 child: Center(
                   child: Container(
-                    width: 40,
-                    height: 40,
+                    width: iconSize??40,
+                    height: iconSize??40,
                     decoration: BoxDecoration(
-                      color: groupColor[2],
+                      color:customAddColor??groupColor[2],
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Icon(
+                    child:  Icon(
                       Icons.add,
                       color: Colors.white,
-                      size: 40,
+                      size: iconSize??40,
                     ),
                   ),
                 ),
@@ -176,8 +187,8 @@ class Pictograms extends StatelessWidget {
                   : Container(),
               disable
                   ? Container(
-                height: 119,
-                width: 96,
+                height: height??119,
+                width: width??96,
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(borderRadius),

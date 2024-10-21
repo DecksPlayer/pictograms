@@ -1,13 +1,3 @@
-# Pictograms
-Welcome to pictograms a new pictograms library based on Picto_Widget
-
-## Getting Started
-
-This project will used to create pictograms that can adjust in the screen dynamically.
-
-## How to use
-
-```flutter
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pictograms/pictograms.dart';
@@ -81,28 +71,3 @@ class PictoWidgetExample extends StatelessWidget {
     );
   }
 }
-```
-## Properties:
-
-* text: set the pictograms name
-* onTap: Tap Action
-* onLongPress: Long Press Action
-* addFunc: create another function
-* height: Custom height of the widget
-* width: Custom width of the widget
-* add: create an Add Button
-* disable: disable the Icon
-* colorNumber: Border Color of the widget
-* borderRadius: Custom Border Radius
-* image: Image or Icon to display
-* imageUrl: Load An Image from the web
-* minFontSize: minimum font Size for default is 0
-* maxFontSize: maximum font size for default is 12
-* customAddColor: change the add Icon color
-* customProgressColor: progressBar color
-* backgroundColor: set a custom background color for default is white
-* iconSize: set the Size of the addIcon
-
-
-![Example](asset/capture.png)
-
