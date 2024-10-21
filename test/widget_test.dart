@@ -1,30 +1,38 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:pictograms/main.dart';
+import 'package:pictograms/src/pictograms.dart';
 
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+void main(){
+  Icon icon = Icon(Icons.house,color: Colors.green);
+  Pictograms pictoWidget = Pictograms(text: 'Hello', onTap: (){
+    print("Hello");
+  },image: icon,);
+  group('picto_widget_test', () {
+    testWidgets('find icon', (widgetTester)async{
+      await widgetTester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+              body:pictoWidget)
+          ,
+        ),
+      );
+      await widgetTester.pumpAndSettle(Duration(milliseconds: 10));
+      expect(find.byWidget(icon), findsOneWidget);
+    });
+    testWidgets('find Text', (WidgetTester tester) async {
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+              body:pictoWidget)
+          ,
+        ),
+      );
+      await tester.pumpAndSettle(Duration(milliseconds: 10),EnginePhase.build,Duration(minutes: 1));
+      expect(find.text('HELLO'), findsWidgets);
+    });
   });
+
 }
