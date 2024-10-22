@@ -12,3 +12,13 @@ minor bug fixed
 minor bug fixed
 ## 1.0.5
 minor bug fixed
+## 1.0.6
+add License
+## 1.0.7
+Minor Bug fixed
+## 1.0.8
+Add Circular Pictogram
+## 1.0.9
+Minor bugfixed
+## 1.0.10
+Minor Bugs Fixed
