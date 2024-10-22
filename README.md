@@ -162,7 +162,7 @@ class PictoWidgetExample extends StatelessWidget {
 * iconSize: set the Size of the addIcon
 * pictoSize: use only with circular pictograms
 
-[Example](./assets/capture.png)
+![Example](./assets/capture.png)
 
 ## CircularPictogram
  ### How To Implements

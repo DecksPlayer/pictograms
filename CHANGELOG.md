@@ -22,3 +22,5 @@ Add Circular Pictogram
 Minor bugfixed
 ## 1.0.10
 Minor Bugs Fixed
+## 1.0.11
+Improvement documentation
