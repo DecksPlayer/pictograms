@@ -1,7 +1,8 @@
 name: pictograms
 description: "A new Pictograms based on Picto_Widget"
-version: 1.0.11
+version: 1.0.13
 homepage: https://github.com/DecksPlayer/pictograms
+
 environment:
   sdk: ^3.5.3
   flutter: ">=1.17.0"

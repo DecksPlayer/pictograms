@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 final Map<int, Color> groupColor = {
@@ -35,6 +37,7 @@ class CircularPictogram extends StatelessWidget {
 
   /// to show add functionality
   final bool add;
+  final bool roundTitle;
 
   /// add function
   final VoidCallback? addFunc;
@@ -79,6 +82,7 @@ class CircularPictogram extends StatelessWidget {
     this.backgroundColor,
     this.textColor,
     this.iconSize,
+    this.roundTitle=true
   }) : super(key: key);
 
   @override
@@ -106,11 +110,51 @@ class CircularPictogram extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: backgroundColor ?? Colors.white,
                   borderRadius: BorderRadius.circular(pictoSize!),
-                  border: Border.all(color: groupColor[colorNumber]!, width: 4),
+                  border: Border.all(color: groupColor[colorNumber]!, width:roundTitle? 24:4),
                 ),
                 child: Visibility(
                     visible: !add,
-                    child: Flex(
+                    child:roundTitle?
+                        Stack(
+                          children: [
+                            Flexible(
+                              fit: FlexFit.tight,
+                              flex: 2,
+                              child:  ClipOval(
+                                child: Center(child:image != null ? image! : Container()),
+                                clipBehavior: Clip.antiAlias,
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                                child:
+                                Center(
+                                     child:Stack(
+                                          children: List.generate(text.length, (index) {
+                                            // Calculate angle for each character
+                                            double angle = (2 * pi / (text.length+3)) * index;
+
+                                            // Position each character around the circle
+                                            return Transform.translate(
+                                              offset: Offset(
+                                                (((pictoSize??119)/2)-12) * -cos(angle),
+                                                (((pictoSize??119)/2)-12) * sin(angle),
+                                              ),
+                                              child: Transform.rotate(
+                                                angle: 0, // Rotate each letter for alignment
+                                                child: Text(
+                                                  text[index].toUpperCase(),
+                                                  style: TextStyle(fontSize: 20, color: textColor),
+                                                ),
+                                              ),
+                                            );
+                                          }).toList()),
+                                )),
+
+
+                          ],
+                        )
+                        :Flex(
                   direction: Axis.vertical,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -118,10 +162,10 @@ class CircularPictogram extends StatelessWidget {
                       fit: FlexFit.tight,
                       flex: 2,
                       child:  ClipOval(
-                          child: Center(child:image != null ? image! : Container()),
-                          clipBehavior: Clip.antiAlias,
-                        ),
+                        child: Center(child:image != null ? image! : Container()),
+                        clipBehavior: Clip.antiAlias,
                       ),
+                    ),
                     Flexible(
                       fit: FlexFit.tight,
                       child: Text(
@@ -169,6 +213,7 @@ class CircularPictogram extends StatelessWidget {
                       ),
                     )
                   : Container(),
+
             ],
           ),
         ),

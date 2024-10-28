@@ -140,6 +140,10 @@ class PictoWidgetExample extends StatelessWidget {
 
 
 ```
+
+![Example](./assets/capture_2.png)
+
+
 ## Properties:
 
 * text: set the pictograms name
@@ -161,8 +165,8 @@ class PictoWidgetExample extends StatelessWidget {
 * backgroundColor: set a custom background color for default is white
 * iconSize: set the Size of the addIcon
 * pictoSize: use only with circular pictograms
+* roundTitle:create a roundTitle only at CircularPictograms
 
-![Example](./assets/capture.png)
 
 ## CircularPictogram
  ### How To Implements

@@ -24,3 +24,7 @@ Minor bugfixed
 Minor Bugs Fixed
 ## 1.0.11
 Improvement documentation
+## 1.0.12
+Improvement documentation
+## 1.0.13
+Add Circular Title
